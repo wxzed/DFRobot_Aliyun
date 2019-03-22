@@ -3,61 +3,42 @@
 #include <ArduinoJson.h>
 #include "DFRobot_Aliyun.h"
 #include "Tone32.h"
+#include "music_joy.h"
 
 #define SPEARKER_PIN  A4
 
 /*配置WIFI名和密码*/
-const char * WIFI_SSID     = "hitest";
-const char * WIFI_PASSWORD = "12345678";
+const char * WIFI_SSID     = "WIFI_SSID";
+const char * WIFI_PASSWORD = "WIFI_PASSWORD";
 
 /*配置设备证书信息*/
-String ProductKey = "a12f7r73yrX";
+String ProductKey = "you Product Key";
 String ClientId = "12345";
-String DeviceName = "SmartDoorbell";
-String DeviceSecret = "dYePw7YNLXeU0AHjHHUsT7bCrJmhUvAe";
+String DeviceName = "you Device Name";
+String DeviceSecret = "you Device Secret";
 
 /*配置域名和端口号*/
 String ALIYUN_SERVER = "iot-as-mqtt.cn-shanghai.aliyuncs.com";
 uint16_t PORT = 1883;
 
 /*需要操作的产品标识符*/
-String Identifier = "DoorbellStatus";
+String Identifier = "you Identifier";
 
 /*需要订阅的TOPIC*/
-const char * subTopic = "/sys/a12f7r73yrX/SmartDoorbell/thing/service/property/set";
+const char * subTopic = "you sub Topic";//****set
 
 uint8_t beginPlay = 0;
 DFRobot_Aliyun myAliyun;
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-int melody[] = {
-NOTE_E4, NOTE_E4, NOTE_E4, NOTE_C4, NOTE_E4, NOTE_G4, NOTE_G3,
-NOTE_C4, NOTE_G3, NOTE_E3, NOTE_A3, NOTE_B3, NOTE_AS3, NOTE_A3, NOTE_G3, NOTE_E4, NOTE_G4, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_E4, NOTE_C4, NOTE_D4, NOTE_B3,
-NOTE_C4, NOTE_G3, NOTE_E3, NOTE_A3, NOTE_B3, NOTE_AS3, NOTE_A3, NOTE_G3, NOTE_E4, NOTE_G4, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_E4, NOTE_C4, NOTE_D4, NOTE_B3,
-NOTE_G4, NOTE_FS4, NOTE_E4, NOTE_DS4, NOTE_E4, NOTE_GS3, NOTE_A3, NOTE_C4, NOTE_A3, NOTE_C4, NOTE_D4, NOTE_G4, NOTE_FS4, NOTE_E4, NOTE_DS4, NOTE_E4, NOTE_C5, NOTE_C5, NOTE_C5,
-NOTE_G4, NOTE_FS4, NOTE_E4, NOTE_DS4, NOTE_E4, NOTE_GS3, NOTE_A3, NOTE_C4, NOTE_A3, NOTE_C4, NOTE_D4, NOTE_DS4, NOTE_D4, NOTE_C4,
-NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_C4, NOTE_A3, NOTE_G3, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_D4, NOTE_E4,
-NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_C4, NOTE_A3, NOTE_G3
-};
- 
-int noteDurations[] = {
-8,4,4,8,4,2,2,
-3,3,3,4,4,8,4,8,8,8,4,8,4,3,8,8,3,
-3,3,3,4,4,8,4,8,8,8,4,8,4,3,8,8,2,
-8,8,8,4,4,8,8,4,8,8,3,8,8,8,4,4,4,8,2,
-8,8,8,4,4,8,8,4,8,8,3,3,3,1,
-8,4,4,8,4,8,4,8,2,8,4,4,8,4,1,
-8,4,4,8,4,8,4,8,2
-};
-static void playMusic(){
-  for (int thisNote = 0; thisNote < 50; thisNote++) { 
-    int noteDuration = 800/noteDurations[thisNote];
-    tone(SPEARKER_PIN, melody[thisNote],noteDuration); 
-    int pauseBetweenNotes = noteDuration * 1.30;
-    delay(pauseBetweenNotes);
-    noTone(SPEARKER_PIN);
+/*播放天空之城*/
+static void playCastleInTheSky(){
+  for (int i = 0; i < sizeof(CastleInTheSkyData)/sizeof(CastleInTheSkyData[0]); i++) { 
+    int noteDuration = CastleInTheSkyDurations[i] *600;
+    tone(SPEARKER_PIN, CastleInTheSkyData[i],noteDuration); 
   }
+  noTone(SPEARKER_PIN);
 }
 
 void connectWiFi(){
@@ -133,7 +114,7 @@ void loop(){
     ConnectAliyun();
   }
   if(beginPlay == 1){
-    playMusic();
+    playCastleInTheSky();
     beginPlay =0;
   }
   client.loop();

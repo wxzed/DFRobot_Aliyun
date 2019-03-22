@@ -8,31 +8,31 @@
 #define SPEARKER_PIN  A4
 
 /*配置WIFI名和密码*/
-const char * WIFI_SSID     = "hitest";
-const char * WIFI_PASSWORD = "12345678";
+const char * WIFI_SSID     = "WIFI_SSID";
+const char * WIFI_PASSWORD = "WIFI_PASSWORD";
 
 /*配置设备证书信息*/
-String ProductKey = "a1HNPgTewi3";
+String ProductKey = "you Product Key";
 String ClientId = "12345";
-String DeviceName = "SmartSpeaker";
-String DeviceSecret = "JVNPREpLjwo3g3A33ic9nlAD6BtD6RAH";
+String DeviceName = "you Device Name";
+String DeviceSecret = "you Device Secret";
 
 /*配置域名和端口号*/
 String ALIYUN_SERVER = "iot-as-mqtt.cn-shanghai.aliyuncs.com";
 uint16_t PORT = 1883;
 
-uint8_t beginPlay = 0;
-uint8_t playWitchOne = 0;
-
 /*需要操作的产品标识符*/
-String Identifier = "PlayWitch";
+String Identifier = "you Identifier";
 
 /*需要订阅的TOPIC*/
-const char * subTopic = "/sys/a1HNPgTewi3/SmartSpeaker/thing/service/property/set";
+const char * subTopic = "you sub Topic";//****set
 
 DFRobot_Aliyun myAliyun;
 WiFiClient espClient;
 PubSubClient client(espClient);
+
+uint8_t beginPlay = 0;
+uint8_t playWitchOne = 0;
 
 /*播放凉凉*/
 static void playLiangLiang(){

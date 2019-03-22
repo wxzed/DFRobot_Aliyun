@@ -7,25 +7,25 @@
 #define READ_DOOR_PIN  D3
 
 /*配置WIFI名和密码*/
-const char * WIFI_SSID     = "hitest";
-const char * WIFI_PASSWORD = "12345678";
+const char * WIFI_SSID     = "WIFI_SSID";
+const char * WIFI_PASSWORD = "WIFI_PASSWORD";
 
 /*配置设备证书信息*/
-String ProductKey = "a1kkvNSgu3f";
+String ProductKey = "you Product Key";
 String ClientId = "12345";
-String DeviceName = "Livingroom_Door";
-String DeviceSecret = "pXr8BxAyy8fcBmwyQJqHG6oOoFJvnHtY";
+String DeviceName = "you Device Name";
+String DeviceSecret = "you Device Secret";
 
 /*配置域名和端口号*/
 String ALIYUN_SERVER = "iot-as-mqtt.cn-shanghai.aliyuncs.com";
 uint16_t PORT = 1883;
 
 /*需要操作的产品标识符*/
-String Identifier = "DoorStatus";
+String Identifier = "you Identifier";
 
 /*需要上报和订阅的两个TOPIC*/
-const char * subTopic = "/sys/a1kkvNSgu3f/Livingroom_Door/thing/service/property/set";
-const char * pubTopic = "/sys/a1kkvNSgu3f/Livingroom_Door/thing/event/property/post";
+const char * subTopic = "you sub Topic";//****set
+const char * pubTopic = "you pub Topic";//******post
 
 DFRobot_Aliyun myAliyun;
 WiFiClient espClient;

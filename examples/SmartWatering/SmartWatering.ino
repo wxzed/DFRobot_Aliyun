@@ -6,24 +6,24 @@
 #define SOIL_SENSOR_PIN  A0
 
 /*配置WIFI名和密码*/
-const char * WIFI_SSID     = "hitest";
-const char * WIFI_PASSWORD = "12345678";
+const char * WIFI_SSID     = "WIFI_SSID";
+const char * WIFI_PASSWORD = "WIFI_PASSWORD";
 
 /*配置设备证书信息*/
-String ProductKey = "a1vkIZ9oY2J";
+String ProductKey = "you Product Key";
 String ClientId = "12345";
-String DeviceName = "SmartWatering";
-String DeviceSecret = "70unufqPiaqnL1yaeviHAUyxHZWJAQZx";
+String DeviceName = "you Device Name";
+String DeviceSecret = "you Device Secret";
 
 /*配置域名和端口号*/
 String ALIYUN_SERVER = "iot-as-mqtt.cn-shanghai.aliyuncs.com";
 uint16_t PORT = 1883;
 
 /*需要操作的产品标识符*/
-String Identifier = "SoilMoisture";
+String Identifier = "you Identifier";
 
 /*需要上报的TOPIC*/
-const char * pubTopic = "/sys/a1vkIZ9oY2J/SmartWatering/thing/event/property/post";
+const char * pubTopic = "you pub Topic";//******post
 
 DFRobot_Aliyun myAliyun;
 WiFiClient espClient;

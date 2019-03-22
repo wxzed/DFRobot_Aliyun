@@ -7,26 +7,26 @@
 #define DHT11_PIN  D2
 
 /*配置WIFI名和密码*/
-const char * WIFI_SSID     = "hitest";
-const char * WIFI_PASSWORD = "12345678";
+const char * WIFI_SSID     = "WIFI_SSID";
+const char * WIFI_PASSWORD = "WIFI_PASSWORD";
 
 /*配置设备证书信息*/
-String ProductKey = "a15SpUCBAwe";
+String ProductKey = "you Product Key";
 String ClientId = "12345";
-String DeviceName = "SmartDHT11";
-String DeviceSecret = "G3up0bWNniPxG4TKzFvIiMAMzgMds7Xy";
+String DeviceName = "you Device Name";
+String DeviceSecret = "you Device Secret";
 
 /*配置域名和端口号*/
 String ALIYUN_SERVER = "iot-as-mqtt.cn-shanghai.aliyuncs.com";
 uint16_t PORT = 1883;
 
 /*需要操作的产品标识符(温度和湿度两个标识符)*/
-String TempIdentifier = "IndoorTemperature";
-String HumiIdentifier = "CurrentHumidity";
+String TempIdentifier = "you Temp Identifier";
+String HumiIdentifier = "you Humi Identifier";
 
 /*需要上报和订阅的两个TOPIC*/
-const char * subTopic = "/sys/a15SpUCBAwe/SmartDHT11/thing/service/property/set";
-const char * pubTopic = "/sys/a15SpUCBAwe/SmartDHT11/thing/event/property/post";
+const char * subTopic = "you sub Topic";//****set
+const char * pubTopic = "you pub Topic";//******post
 
 DFRobot_Aliyun myAliyun;
 WiFiClient espClient;
